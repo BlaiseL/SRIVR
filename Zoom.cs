@@ -66,7 +66,7 @@ public class Zoom : MonoBehaviour
             {
                 Debug.Log("You are zooming out");
                 //Change the SCALE 
-                World.transform.localScale = new Vector3(x += .03f, y += .03f, z += .03f);
+                World.transform.localScale = new Vector3(x += .1f, y += .1f, z += .1f);
             }
             //Zoom in
             if (diff < 0 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
@@ -75,7 +75,7 @@ public class Zoom : MonoBehaviour
                 {
                     //Change the Scale smaller
                     Debug.Log("You are zooming in");
-                    World.transform.localScale = new Vector3(x -= .03f, y -= .03f, z -= .03f);
+                    World.transform.localScale = new Vector3(x -= .1f, y -= .1f, z -= .1f);
                 }
             }
         }
