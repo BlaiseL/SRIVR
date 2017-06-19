@@ -24,7 +24,8 @@ public class GenerateCapsules : MonoBehaviour {
             Rigidbody cyl = cylinder.GetComponent<Rigidbody>();
             cyl.isKinematic = true;
             cyl.useGravity = false;
-            cylinder.transform.position = leftCtrl.transform.position;
+            cylinder.transform.localScale = new Vector3(1 , 0.01f , 1);
+            cylinder.transform.position = cam.transform.position;
             cylinder.GetComponent<Renderer>().material.color= Color.blue;
             list.Add(cylinder);
         }
@@ -35,7 +36,16 @@ public class GenerateCapsules : MonoBehaviour {
             cam.transform.position = ((GameObject)(list[counter])).transform.position;
             counter++;
             Debug.Log("Size: " + list.Count);
-            Debug.Log(" Counter: "+ counter);
+            Debug.Log(" Counter: " + counter);
+        }
+        //touchpad click down destroys the pad your at
+        if (touchpad.y < -.7f && deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && counter>0)
+        {
+            counter--;
+            Debug.Log("trying to destroy and counter:" + counter);
+            Destroy((GameObject)(list[counter]));
+            list.RemoveAt(counter);
         }
     }
+    
 }
