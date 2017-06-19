@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,9 +16,13 @@ public class Zoom : MonoBehaviour
     Vector3 lastPositionl;
     Vector3 lastPositionr;
     public GameObject World;
+    public GameObject cube;
     float x = 1;
     float y = 1;
     float z = 1;
+    float xc = 0.3f;
+ 
+    
 
     //update the code works by frame 
     private void Update()
@@ -31,6 +35,8 @@ public class Zoom : MonoBehaviour
     */
     private void FixedUpdate()
     {
+        cube.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        cube.GetComponent<Renderer>().enabled = false;
         var deviceLeft = SteamVR_Controller.Input((int)leftCtrl.index);
         var deviceRight = SteamVR_Controller.Input((int)rightCtrl.index);
         /*
@@ -56,6 +62,7 @@ public class Zoom : MonoBehaviour
          */
         if (deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
         {
+            cube.GetComponent<Renderer>().enabled = true;
             Debug.Log("You squeezed both");
             float lastdist = Vector3.Distance(lastPositionl, lastPositionr);
             float dist = Vector3.Distance(c1.transform.position, c2.transform.position);
@@ -67,6 +74,8 @@ public class Zoom : MonoBehaviour
                 Debug.Log("You are zooming out");
                 //Change the SCALE 
                 World.transform.localScale = new Vector3(x += .1f, y += .1f, z += .1f);
+                xc += .05f;
+                cube.transform.localScale = new Vector3(xc, xc, xc);
             }
             //Zoom in
             if (diff < 0 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
@@ -76,6 +85,8 @@ public class Zoom : MonoBehaviour
                     //Change the Scale smaller
                     Debug.Log("You are zooming in");
                     World.transform.localScale = new Vector3(x -= .1f, y -= .1f, z -= .1f);
+                    xc -= .05f;
+                    cube.transform.localScale = new Vector3(xc, xc, xc);
                 }
             }
         }

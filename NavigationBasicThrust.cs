@@ -22,7 +22,7 @@ public class NavigationBasicThrust : MonoBehaviour
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
- 
+
     void FixedUpdate()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
