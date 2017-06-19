@@ -35,7 +35,7 @@ public class Zoom : MonoBehaviour
     */
     private void FixedUpdate()
     {
-        cube.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+        cube.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .5f);//transperant 
         cube.GetComponent<Renderer>().enabled = false;
         var deviceLeft = SteamVR_Controller.Input((int)leftCtrl.index);
         var deviceRight = SteamVR_Controller.Input((int)rightCtrl.index);
