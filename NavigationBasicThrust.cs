@@ -12,7 +12,7 @@ public class NavigationBasicThrust : MonoBehaviour
     public float ThrustForce;
     public bool ShowTrustMockup = true;
     public GameObject ThrustMockup;
-
+  
     SteamVR_TrackedObject trackedObj;
     FixedJoint joint;
     GameObject attachedObject;
@@ -22,6 +22,7 @@ public class NavigationBasicThrust : MonoBehaviour
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
+
 
     void FixedUpdate()
     {
@@ -37,14 +38,26 @@ public class NavigationBasicThrust : MonoBehaviour
                 tempVector = Quaternion.Euler(ThrustDirection) * Vector3.forward;
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
+                //increase speed
+                if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && touchpad.y > .7f && ThrustForce < 15)
+                {
+                    Debug.Log("Increase speed" + ThrustForce);
+                    ThrustForce++;
+                }
             }
             //If touching the bottom half of the touchpad adds force to the user in the opposite direction of the controller
             else if (touchpad.y < -.7f)
-            {
+            { 
+                //decrease speed
                 Debug.Log("Touchpad pressed moving up");
                 tempVector = Quaternion.Euler(ThrustDirection) * new Vector3(0, 0, -1);
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
+                if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && touchpad.y < -.7f && ThrustForce > 0)
+                {
+                    Debug.Log("Decrease speed" + ThrustForce);
+                    ThrustForce--;
+                }
             }
             //If touching the right half of the touchpad adds force on the user to the right
             else if (touchpad.x > .7f)
@@ -63,13 +76,12 @@ public class NavigationBasicThrust : MonoBehaviour
                 NaviBase.maxAngularVelocity = 2f;
             }
         }
-
         //stop moving
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            Debug.Log("Released the trackpad");
-            NaviBase.velocity = Vector3.zero;
-            NaviBase.angularVelocity = Vector3.zero;
+             Debug.Log("Released the trackpad");
+             NaviBase.velocity = Vector3.zero;
+             NaviBase.angularVelocity = Vector3.zero;
         }
     }
 }
