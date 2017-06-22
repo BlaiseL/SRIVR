@@ -60,6 +60,7 @@ public class Zoom : MonoBehaviour
         {
             Debug.Log("You reset the scale");
             xc = 0.5f;
+            x = 1;
             cube.transform.localScale = new Vector3(xc, xc, xc);
             World.transform.localScale = new Vector3(1, 1, 1);
         }
