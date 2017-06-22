@@ -20,7 +20,7 @@ public class Zoom : MonoBehaviour
     float x = 1;
     float y = 1;
     float z = 1;
-    float xc = 0.3f;
+    float xc = 0.5f;
  
     
 
@@ -35,7 +35,7 @@ public class Zoom : MonoBehaviour
     */
     private void FixedUpdate()
     {
-        cube.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .5f);//transperant 
+        cube.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .5f);// makes cube transparent
         cube.GetComponent<Renderer>().enabled = false;
         var deviceLeft = SteamVR_Controller.Input((int)leftCtrl.index);
         var deviceRight = SteamVR_Controller.Input((int)rightCtrl.index);
@@ -43,6 +43,11 @@ public class Zoom : MonoBehaviour
          * Debug logs testing various grip presses
          * 
          */
+        if (deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+        {
+            Debug.Log("You pushed the menu button");
+        }
+
         if (deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
         {
             Debug.Log("You squeeeeezed ME Left");
@@ -51,9 +56,11 @@ public class Zoom : MonoBehaviour
         {
             Debug.Log("You squeeeeezed ME Right");
         }
-        if (deviceRight.GetPress(SteamVR_Controller.ButtonMask.Trigger))
+        if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
-            Debug.Log("Your reset the scale");
+            Debug.Log("You reset the scale");
+            xc = 0.5f;
+            cube.transform.localScale = new Vector3(xc, xc, xc);
             World.transform.localScale = new Vector3(1, 1, 1);
         }
         /*
@@ -69,18 +76,21 @@ public class Zoom : MonoBehaviour
             float diff = dist - lastdist;
             //Debug.Log(lastdist + "  " + dist);
             //Zoom out
-            if (diff > 0 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
+            if (diff > 0.02 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
             {
-                Debug.Log("You are zooming out");
-                //Change the SCALE 
-                World.transform.localScale = new Vector3(x += .1f, y += .1f, z += .1f);
-                xc += .05f;
-                cube.transform.localScale = new Vector3(xc, xc, xc);
+                if (xc < 9f)
+                {
+                    Debug.Log("You are zooming out");
+                    //Change the SCALE 
+                    World.transform.localScale = new Vector3(x += .1f, y += .1f, z += .1f);
+                    xc += .05f;
+                    cube.transform.localScale = new Vector3(xc, xc, xc);
+                }
             }
             //Zoom in
-            if (diff < 0 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
+            if (diff < -0.02 && deviceRight.GetPress(SteamVR_Controller.ButtonMask.Grip) && deviceLeft.GetPress(SteamVR_Controller.ButtonMask.Grip))
             {
-                if (x > .1f)
+                if (x > .1f && xc >.5f)
                 {
                     //Change the Scale smaller
                     Debug.Log("You are zooming in");
