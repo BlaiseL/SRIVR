@@ -5,37 +5,35 @@ using UnityEngine;
 public class toolTIP : MonoBehaviour
 {
 
-    SteamVR_TrackedObject trackedObj;
-    GameObject attachedObject;
+    public SteamVR_TrackedObject trackedObj, otherTrackedObj;
     private bool menuUp;
-    public GameObject tip, top;
+    public GameObject leftMenu, rightMenu;
     // Initializes controller as tracked object
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
-        tip.GetComponent<Renderer>().enabled = false;
-        top.GetComponent<Renderer>().enabled = false;
+        otherTrackedObj = GetComponent<SteamVR_TrackedObject>();
+        leftMenu.GetComponent<Renderer>().enabled = false;
+        rightMenu.GetComponent<Renderer>().enabled = false;
     }
 
 
     void FixedUpdate()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
-        
+        //If you press down on the menu button while the tooltip is down, the tooltip toggles on
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && !menuUp)
         {
-            Debug.Log("WE SQUADD BOIES");
-            tip.GetComponent<Renderer>().enabled = true;
-            top.GetComponent<Renderer>().enabled = true;
+            leftMenu.GetComponent<Renderer>().enabled = true;
+            rightMenu.GetComponent<Renderer>().enabled = true;
             menuUp = true;
         }
+        //If you  press down on the menu button while the tooltip is up the menu toggles up
         else if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && menuUp)
         {
-            Debug.Log("WE SQUADD BOIES");
-            tip.GetComponent<Renderer>().enabled = false;
-            top.GetComponent<Renderer>().enabled = false;
+            leftMenu.GetComponent<Renderer>().enabled = false;
+            rightMenu.GetComponent<Renderer>().enabled = false;
             menuUp = false;
         }
-
     }
 }
