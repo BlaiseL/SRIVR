@@ -21,20 +21,23 @@ public class GenerateCapsules1 : MonoBehaviour {
     int num=0;
     bool menuUp = false; 
 
+    //intitialize menu as inactive
     private void Start()
     {
         c.SetActive(false);
         dropdown.Hide();
     }
 
+    //function to add to the menu
     public void Dropdown_Add(int y)
     {
-        Debug.Log("Fuck this dropdown menu bullshit-add");
+        Debug.Log("Adding the component to dropdown");
         dropdown.options.Add(new Dropdown.OptionData("Teleport Pad " + y));
     }
+    //Remove from the menu
     public void Dropdown_Remove(int x)
     {
-        Debug.Log("Fuck this dropdown menu bullshit-delete");
+        Debug.Log("Delete from the menu");
         dropdown.options.RemoveAt(x);
         dropdown.RefreshShownValue();
     }
@@ -81,8 +84,8 @@ public class GenerateCapsules1 : MonoBehaviour {
             if(cam.transform.position == ((GameObject)(list[size - 1])).transform.position)
             {
                 Destroy((GameObject)(list[list.Count-1]));
-                list.RemoveAt(size-1);
-                Dropdown_Remove(size);
+                list.RemoveAt(size-1); //remove from list
+                Dropdown_Remove(size); //remove from menu
             }
             //destroy the touchpad you teleport to
             else if (counter > -1)
@@ -114,6 +117,12 @@ public class GenerateCapsules1 : MonoBehaviour {
                 ((GameObject)(list[counter])).GetComponent<Renderer>().material.color = (Color)(label[lcount]);
             }
         }
+
+        /*
+		Toggle Menu
+
+        */
+        //if the menu is not up clicking will start it 
         if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && !menuUp)
         {
             Debug.Log("Menu is up");
@@ -122,6 +131,7 @@ public class GenerateCapsules1 : MonoBehaviour {
             menuUp = true;
             cam.GetComponent<Zoom>().enabled = false;
         }
+        //if the menu is up disavle it on click
         else if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && menuUp)
         {
             Debug.Log("Menu is down");
@@ -131,7 +141,7 @@ public class GenerateCapsules1 : MonoBehaviour {
         }
         
     }
-
+    //teleport to pad function for changeonvalue in unity
     public void teleportMenu()
     {
         int g = dropdown.value;
