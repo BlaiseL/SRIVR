@@ -21,7 +21,7 @@ public class GenerateCapsules1 : MonoBehaviour {
     int num=0;
     bool menuUp = false; 
 
-    //intitialize menu as inactive
+    //intitialize menu as inactive and  pointer as inactive
     private void Start()
     {
         c.SetActive(false);
@@ -31,13 +31,11 @@ public class GenerateCapsules1 : MonoBehaviour {
     //function to add to the menu
     public void Dropdown_Add(int y)
     {
-        Debug.Log("Adding the component to dropdown");
         dropdown.options.Add(new Dropdown.OptionData("Teleport Pad " + y));
     }
     //Remove from the menu
     public void Dropdown_Remove(int x)
     {
-        Debug.Log("Delete from the menu");
         dropdown.options.RemoveAt(x);
         dropdown.RefreshShownValue();
     }
@@ -68,10 +66,6 @@ public class GenerateCapsules1 : MonoBehaviour {
         // touchpad click right cycles and teleports
         if (touchpad.x > .7f && deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            Debug.Log("Size of List: " + list.Count);
-            Debug.Log ("We think the size is"+ size);
-            Debug.Log("List Counter: " + counter);
-            Debug.Log("Menu Counter" +deletespot);
             counter++;
             counter %= size;
             deletespot=counter;
@@ -90,7 +84,6 @@ public class GenerateCapsules1 : MonoBehaviour {
             //destroy the touchpad you teleport to
             else if (counter > -1)
             {
-                Debug.Log("trying to destroy and counter:" + counter);
                 Destroy((GameObject)(list[counter]));
                 deletespot=counter;
                 list.RemoveAt(counter);
@@ -125,7 +118,6 @@ public class GenerateCapsules1 : MonoBehaviour {
         //if the menu is not up clicking will start it 
         if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && !menuUp)
         {
-            Debug.Log("Menu is up");
             c.SetActive(true);
             dropdown.Show();
             menuUp = true;
@@ -134,7 +126,6 @@ public class GenerateCapsules1 : MonoBehaviour {
         //if the menu is up disavle it on click
         else if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && menuUp)
         {
-            Debug.Log("Menu is down");
             c.SetActive(false);
             menuUp = false;
             cam.GetComponent<Zoom>().enabled = true;
