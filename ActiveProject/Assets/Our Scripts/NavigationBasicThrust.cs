@@ -34,7 +34,7 @@ public class NavigationBasicThrust : MonoBehaviour
             Vector2 touchpad = device.GetAxis(Valve.VR.EVRButtonId.k_EButton_Axis0);
             if (touchpad.y > .7f)
             {
-                Debug.Log("Touchpad pressed moving up");
+                //Debug.Log("Touchpad pressed moving up");
                 tempVector = Quaternion.Euler(ThrustDirection) * Vector3.forward;
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
@@ -49,7 +49,7 @@ public class NavigationBasicThrust : MonoBehaviour
             else if (touchpad.y < -.7f)
             { 
                 //decrease speed
-                Debug.Log("Touchpad pressed moving up");
+                //Debug.Log("Touchpad pressed moving up");
                 tempVector = Quaternion.Euler(ThrustDirection) * new Vector3(0, 0, -1);
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
@@ -62,7 +62,7 @@ public class NavigationBasicThrust : MonoBehaviour
             //If touching the right half of the touchpad adds force on the user to the right
             else if (touchpad.x > .7f)
             {
-                Debug.Log("Touchpad pressed moving right");
+               // Debug.Log("Touchpad pressed moving right");
                 tempVector = Quaternion.Euler(ThrustDirection) * new Vector3(1, 0, 0);
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
@@ -70,7 +70,7 @@ public class NavigationBasicThrust : MonoBehaviour
             //If touching the left half of the touchpad adds force on the user towards the left
             else if (touchpad.x < -.7f)
             {
-                Debug.Log("Touchpad pressed moving left");
+                //Debug.Log("Touchpad pressed moving left");
                 tempVector = Quaternion.Euler(ThrustDirection) * new Vector3(-1, 0, 0);
                 NaviBase.AddForce(transform.rotation * tempVector * ThrustForce);
                 NaviBase.maxAngularVelocity = 2f;
@@ -79,7 +79,7 @@ public class NavigationBasicThrust : MonoBehaviour
         //stop moving
         if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Touchpad))
         {
-             Debug.Log("Released the trackpad");
+             //Debug.Log("Released the trackpad");
              NaviBase.velocity = Vector3.zero;
              NaviBase.angularVelocity = Vector3.zero;
         }

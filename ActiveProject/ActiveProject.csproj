@@ -91,9 +91,29 @@
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_PointGenerator.cs" />
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_SteamVRAdapter.cs" />
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_SteamVRControllerAdapter.cs" />
+    <Compile Include="Assets\Our Scripts\DemoLaserPointerTest.cs" />
+    <Compile Include="Assets\Our Scripts\DemoMenu.cs" />
     <Compile Include="Assets\Our Scripts\GenerateCapsules.cs" />
     <Compile Include="Assets\Our Scripts\GenerateCapsules1.cs" />
+    <Compile Include="Assets\Our Scripts\GravityGun.cs" />
+    <Compile Include="Assets\Our Scripts\IUILaserPointer.cs" />
+    <Compile Include="Assets\Our Scripts\LaserPointerEventData.cs" />
+    <Compile Include="Assets\Our Scripts\LaserPointerInputModule.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ActiveStateToggler.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ApplicationManager.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ChangeColor.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\DragMe.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\DragPanel.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\DropMe.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\PanelManager.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ResizePanel.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ScrollDetailTexture.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ShowSliderValue.cs" />
+    <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\TiltWindow.cs" />
     <Compile Include="Assets\Our Scripts\NavigationBasicThrust.cs" />
+    <Compile Include="Assets\Our Scripts\UIIgnoreRaycast.cs" />
+    <Compile Include="Assets\Our Scripts\ViveControllerInput.cs" />
+    <Compile Include="Assets\Our Scripts\ViveUILaserPointer.cs" />
     <Compile Include="Assets\Our Scripts\Zoom.cs" />
     <Compile Include="Assets\Our Scripts\Zoom1.cs" />
     <Compile Include="Assets\Our Scripts\toolTIP.cs" />
@@ -414,6 +434,10 @@
     <Compile Include="Assets\VRnavigationBasicThrust\JoelGenModels\scripts\ObjectGrid.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Our Scripts\LaserPointer.shader" />
+    <None Include="Assets\Our Scripts\Menu Project\Assets\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Our Scripts\Menu Project\Assets\Materials\UI-Default-No-Alpha.shader" />
+    <None Include="Assets\Our Scripts\Menu Project\Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />
     <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
