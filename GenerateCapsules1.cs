@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
@@ -14,25 +15,24 @@ public class GenerateCapsules1 : MonoBehaviour {
     public GameObject cam;
     int lcount = -1;
     Color[] label = {Color.blue, Color.green, Color.magenta, Color.yellow, Color.red, Color.white };
-    int padCounter = 1;
-    
+    int deletespot=-1;
+    int num=0;
 
     public void Dropdown_Add(int y)
     {
         Debug.Log("Fuck this dropdown menu bullshit-add");
         dropdown.options.Add(new Dropdown.OptionData("Teleport Pad " + y));
-        padCounter++;
     }
     public void Dropdown_Remove(int x)
     {
         Debug.Log("Fuck this dropdown menu bullshit-delete");
-        dropdown.options.RemoveAt(padCounter);
-        padCounter--;
+        dropdown.options.RemoveAt(x);
         dropdown.RefreshShownValue();
     }
 
     private void Update()
     {
+        int size=list.Count;
         var deviceLeft = SteamVR_Controller.Input((int)leftCtrl.index);
         Vector2 touchpad = deviceLeft.GetAxis(Valve.VR.EVRButtonId.k_EButton_Axis0);
         //touchpad up generates a capsule and stores it in arraylist
@@ -48,37 +48,43 @@ public class GenerateCapsules1 : MonoBehaviour {
             cylinder.transform.position = cam.transform.position;
             cylinder.GetComponent<Renderer>().material.color= Color.blue;
             list.Add(cylinder);
-            Dropdown_Add(padCounter);
+            num++;
+            Dropdown_Add(num);
         }
 
         // touchpad click right cycles and teleports
         if (touchpad.x > .7f && deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
+            Debug.Log("Size of List: " + list.Count);
+            Debug.Log ("We think the size is"+ size);
+            Debug.Log("List Counter: " + counter);
+            Debug.Log("Menu Counter" +deletespot);
             counter++;
-            counter %= list.Count;
+            counter %= size;
+            deletespot=counter;
             cam.transform.position = ((GameObject)(list[counter])).transform.position;
-            Debug.Log("Size: " + list.Count);
-            Debug.Log(" Counter: " + counter);
         }
         //touchpad click down destroys the pad your at
         if (touchpad.y < -.7f && deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            //destroy the touchpad your on
-            if(cam.transform.position == ((GameObject)(list[list.Count - 1])).transform.position)
+            //destroy the last touchpad if youre on it
+            if(cam.transform.position == ((GameObject)(list[size - 1])).transform.position)
             {
-                Destroy((GameObject)(list[list.Count-1]));
-                list.RemoveAt(list.Count-1);
-                Dropdown_Remove(padCounter);
+                //Destroy((GameObject)(list[list.Count-1]));
+                list.RemoveAt(size-1);
+                Dropdown_Remove(size);
             }
-            //destroy the touchpad you teleporte to
+            //destroy the touchpad you teleport to
             else if (counter > -1)
             {
                 Debug.Log("trying to destroy and counter:" + counter);
-                Destroy((GameObject)(list[counter]));
+                //Destroy((GameObject)(list[counter]));
+                deletespot=counter;
                 list.RemoveAt(counter);
+                Dropdown_Remove(deletespot+1);
             }
             if (list.Count!=0)
-                counter %= list.Count;
+                counter %= size;
         }
 
         //change the color of the padd
