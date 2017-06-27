@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Zoomin2.ElectricBoogaloo.unity
-  isLoaded: 1
-  isActive: 1
