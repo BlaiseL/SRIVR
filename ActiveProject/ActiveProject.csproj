@@ -97,6 +97,7 @@
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_PointGenerator.cs" />
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_SteamVRAdapter.cs" />
     <Compile Include="Assets\Focal Point VR\Scripts\FocalPointVR_SteamVRControllerAdapter.cs" />
+    <Compile Include="Assets\Our Scripts\Coordinates.cs" />
     <Compile Include="Assets\Our Scripts\DemoLaserPointerTest.cs" />
     <Compile Include="Assets\Our Scripts\DemoMenu.cs" />
     <Compile Include="Assets\Our Scripts\GenerateCapsules1.cs" />
