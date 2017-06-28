@@ -32,6 +32,7 @@ public class GenerateCapsules1 : MonoBehaviour {
     public void Dropdown_Add(int y)
     {
         dropdown.options.Add(new Dropdown.OptionData("Teleport Pad " + y));
+        dropdown.RefreshShownValue();
     }
     //Remove from the menu
     public void Dropdown_Remove(int x)
