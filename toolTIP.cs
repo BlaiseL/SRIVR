@@ -8,6 +8,8 @@ public class toolTIP : MonoBehaviour
     public SteamVR_TrackedObject trackedObj, otherTrackedObj;
     private bool menuUp;
     public GameObject leftMenu, rightMenu;
+    public GameObject coordinates;
+
     // Initializes controller as tracked object
     void Awake()
     {
@@ -15,24 +17,26 @@ public class toolTIP : MonoBehaviour
         otherTrackedObj = GetComponent<SteamVR_TrackedObject>();
         leftMenu.GetComponent<Renderer>().enabled = false;
         rightMenu.GetComponent<Renderer>().enabled = false;
+        coordinates.SetActive(false);
     }
 
 
     void FixedUpdate()
     {
         var device = SteamVR_Controller.Input((int)trackedObj.index);
-        //If you press down on the menu button while the tooltip is down, the tooltip toggles on
+        
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && !menuUp)
         {
             leftMenu.GetComponent<Renderer>().enabled = true;
             rightMenu.GetComponent<Renderer>().enabled = true;
+            coordinates.SetActive(true);
             menuUp = true;
         }
-        //If you  press down on the menu button while the tooltip is up the menu toggles up
         else if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && menuUp)
         {
             leftMenu.GetComponent<Renderer>().enabled = false;
             rightMenu.GetComponent<Renderer>().enabled = false;
+            coordinates.SetActive(false);
             menuUp = false;
         }
     }

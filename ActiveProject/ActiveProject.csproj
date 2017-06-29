@@ -121,6 +121,7 @@
     <Compile Include="Assets\Our Scripts\ViveControllerInput.cs" />
     <Compile Include="Assets\Our Scripts\ViveUILaserPointer.cs" />
     <Compile Include="Assets\Our Scripts\Zoom.cs" />
+    <Compile Include="Assets\Our Scripts\Zoom1.cs" />
     <Compile Include="Assets\Our Scripts\toolTIP.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />

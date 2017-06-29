@@ -21,9 +21,17 @@ public class Zoom : MonoBehaviour
     float y = 1;
     float z = 1;
     float xc = 0.5f;
- 
-    
+    public MeshRenderer currentRenderer;
+    public Texture2D small;
+    public Texture2D medium;
+    public Texture2D large;
+    public Texture2D extraLarge;
 
+
+    private void Start()
+    {
+        currentRenderer = cube.GetComponent<MeshRenderer>();
+    }
     //update the code works by frame 
     private void Update()
     {
@@ -56,7 +64,7 @@ public class Zoom : MonoBehaviour
         {
             Debug.Log("You squeeeeezed ME Right");
         }
-        if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) && !deviceRight.GetTouch(SteamVR_Controller.ButtonMask.Grip))
+        if (deviceRight.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             Debug.Log("You reset the scale");
             xc = 0.5f;
@@ -103,6 +111,22 @@ public class Zoom : MonoBehaviour
                 }
             }
         }
+        if (cube.transform.localScale.x <= 2 )
+        {
+            currentRenderer.material.SetTexture("_MainTex", small);
+        }
+        else if (cube.transform.localScale.x > 2 && cube.transform.localScale.x <= 5)
+        {
+            currentRenderer.material.SetTexture("_MainTex", medium);
+        }
+        else if (cube.transform.localScale.x > 5 && cube.transform.localScale.x <= 8)
+        {
+            currentRenderer.material.SetTexture("_MainTex", large);
+        }
+        else if (cube.transform.localScale.x > 8)
+        {
+            currentRenderer.material.SetTexture("_MainTex", extraLarge);
+        }
     }
-
+    //2, 5, 8 are the three points of change
 }

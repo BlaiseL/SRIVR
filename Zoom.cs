@@ -21,14 +21,17 @@ public class Zoom : MonoBehaviour
     float y = 1;
     float z = 1;
     float xc = 0.5f;
-    public MeshRenderer currentRenderer = cube.GetComponent<MeshRenderer>();
+    public MeshRenderer currentRenderer;
     public Texture2D small;
     public Texture2D medium;
     public Texture2D large;
     public Texture2D extraLarge;
 
 
-
+    private void Start()
+    {
+        currentRenderer = cube.GetComponent<MeshRenderer>();
+    }
     //update the code works by frame 
     private void Update()
     {
@@ -66,6 +69,8 @@ public class Zoom : MonoBehaviour
             Debug.Log("You reset the scale");
             xc = 0.5f;
             x = 1;
+            y = 1;
+            z = 1;
             cube.transform.localScale = new Vector3(xc, xc, xc);
             World.transform.localScale = new Vector3(1, 1, 1);
         }
@@ -106,19 +111,19 @@ public class Zoom : MonoBehaviour
                 }
             }
         }
-        if (cube.transform.localscale.x <= 2 )
+        if (cube.transform.localScale.x <= 2 )
         {
             currentRenderer.material.SetTexture("_MainTex", small);
         }
-        else if (cube.transform.localscale.x > 2 && cube.transform.localscale.x <= 5)
+        else if (cube.transform.localScale.x > 2 && cube.transform.localScale.x <= 5)
         {
             currentRenderer.material.SetTexture("_MainTex", medium);
         }
-        else if (cube.transform.localscale.x > 5 && cube.transform.localscale.x <= 8)
+        else if (cube.transform.localScale.x > 5 && cube.transform.localScale.x <= 8)
         {
             currentRenderer.material.SetTexture("_MainTex", large);
         }
-        else if (cube.transform.localscale.x > 8)
+        else if (cube.transform.localScale.x > 8)
         {
             currentRenderer.material.SetTexture("_MainTex", extraLarge);
         }
