@@ -70,7 +70,7 @@ public class Zoom : MonoBehaviour
             xc = 0.5f;
             x = 1;
             y = 1;
-            z = 1;
+            z = 1; 
             cube.transform.localScale = new Vector3(xc, xc, xc);
             World.transform.localScale = new Vector3(1, 1, 1);
         }

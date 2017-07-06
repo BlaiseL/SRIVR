@@ -28,7 +28,8 @@ public class GenerateCapsules1 : MonoBehaviour
     System.IO.StreamWriter wfile;
     System.IO.StreamReader reader;
     ArrayList deletedLines = new ArrayList();
-    
+    public String temp;
+    System.IO.StreamWriter nfile;
 
     //intitialize menu as inactive and  pointer as inactive
     private void Start()
@@ -197,8 +198,9 @@ public class GenerateCapsules1 : MonoBehaviour
         deletedLines.Sort();
         wfile.Close();
         reader.Close();
+        var fp = File.Open(temp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
         var fs = File.Open(fname, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        wfile = new System.IO.StreamWriter(fs);
+        nfile = new System.IO.StreamWriter(fp);
         reader = new System.IO.StreamReader(fs);
         string line;
         int check = 1;
@@ -209,16 +211,20 @@ public class GenerateCapsules1 : MonoBehaviour
             if (ctr != deletedLines.Count && check == (int)(deletedLines[ctr]))
             {
                 Debug.Log((int)deletedLines[ctr] + " delete this line");
-                wfile.WriteLine(line + ", dinosaur");
+                nfile.WriteLine(line + ", dinosaur");
                 ctr++;
             }
             else
             {
-                wfile.WriteLine(line);
+                nfile.WriteLine(line);
             }
             check++;
         }
+        nfile.Close();
         wfile.Close();
         reader.Close();
+        File.Delete(fname);
+        File.Move(temp, fname);
+        File.Delete(temp);
     }
 }
