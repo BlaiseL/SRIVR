@@ -131,6 +131,7 @@
     <None Include="Assets\Our Scripts\Menu Project\Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+    <None Include="Assets\Our Scripts\test.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
