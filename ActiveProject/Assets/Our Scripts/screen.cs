@@ -15,8 +15,8 @@ public class screen : MonoBehaviour
 
     void Awake()
     {
-        if (resetIndex) PlayerPrefs.SetInt("ScreenshotIndex", 0);
-        if (customPath != "")
+        if (resetIndex) PlayerPrefs.SetInt("ScreenshotIndex", 0); //reset index if player checks pictures
+        if (customPath != "") //if there is a path save it there
         {
             if (!System.IO.Directory.Exists(customPath))
             {
@@ -28,17 +28,16 @@ public class screen : MonoBehaviour
 
 
 
-
+    //take screenshot and add to custom path
     public void takepic()
     {
         canv.SetActive(false);
         Application.CaptureScreenshot(customPath + imageName + index + ".png", resolution);
-        Debug.LogWarning("Screenshot saved: " + customPath + " --- " + imageName + index);
+        Debug.Log("Screenshot saved: " + customPath + " --- " + imageName + index);
         index++;
-        //canv.SetActive(true);
     }
     void OnApplicationQuit()
     {
-        PlayerPrefs.SetInt("ScreenshotIndex", (index));
+        PlayerPrefs.SetInt("ScreenshotIndex", (index)); //make sure to set index for next pic
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
 using System.IO;
+
 /*
  * Generate cylinder to teleport to and add it to the dropdown menu
  * Delete created cylinders from the world and dropdown 
@@ -30,30 +31,33 @@ public class GenerateCapsules1 : MonoBehaviour
     ArrayList deletedLines = new ArrayList();
     public String temp;
     System.IO.StreamWriter nfile;
-
+    
     //intitialize menu as inactive and  pointer as inactive
     private void Start()
     {
-
-        var fs = File.Open(fname, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        wfile = new System.IO.StreamWriter(fs);
+        //FileIO to load from a saved file of pads 
+        var orgfile = File.Open(fname, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+       //   wfile = new System.IO.StreamWriter(orgfile);
         c.SetActive(false);
         dropdown.Hide();
-        reader = new System.IO.StreamReader(fs);
+        //reader for the text file
+        reader = new System.IO.StreamReader(orgfile);
         string line;
-        Debug.Log("HERE");
+        //read all lines
         while (( line=reader.ReadLine() ) != null)
         {
-            Debug.Log(line);
-            Debug.Log("Should be adding pads");
+            //Parse the line and add the pads through method "add"
             string[] arr = line.Split(',');
-            //This should only print lines we didnt delete
             if (arr.Length==4)
             {
-                num = Int16.Parse(arr[0]);
+                num = Int16.Parse(arr[0]); 
                 add(new Vector3(float.Parse(arr[1]), float.Parse(arr[2]), float.Parse(arr[3])), num);
             }
         }
+        reader.Close();
+        File.Copy(fname, temp,true);
+        nfile = File.AppendText(temp);
+
     }
 
     //function to add to the menu
@@ -73,7 +77,7 @@ public class GenerateCapsules1 : MonoBehaviour
         Debug.Log(r);
         dropdown.options.RemoveAt(x);
         dropdown.RefreshShownValue();
-        deletedLines.Add(r);
+        deletedLines.Add(r); //add to a deleted list
     }
 
     private void Update()
@@ -85,11 +89,9 @@ public class GenerateCapsules1 : MonoBehaviour
         //touchpad up generates a capsule and stores it in arraylist
         if (touchpad.y > .7f && deviceLeft.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            wfile.WriteLine(num + "," + cam.transform.position.x + "," + cam.transform.position.y +
+            nfile.WriteLine(num + "," + cam.transform.position.x + "," + cam.transform.position.y +
              "," + cam.transform.position.z);
             add(cam.transform.position, num);
-        
-
         }
 
         // touchpad click right cycles and teleports
@@ -161,6 +163,7 @@ public class GenerateCapsules1 : MonoBehaviour
         }
         
     }
+
     //teleport to pad function for changeonvalue in unity
     public void teleportMenu()
     {
@@ -171,6 +174,55 @@ public class GenerateCapsules1 : MonoBehaviour
             cam.transform.position = ((GameObject)(list[g - 1])).transform.position;
         }
     }
+    //Saves the pad locations
+    public void save()
+    {
+        nfile.Close();
+        File.Delete(fname);
+        File.Copy(temp, fname, true);
+        // var tempfile = File.Open(temp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        delete();
+        nfile = File.AppendText(temp);
+    }
+    //Deletes a pad from the save file
+    void delete()
+    {
+        nfile.Close();
+        deletedLines.Sort();
+        reader.Close();
+        File.WriteAllText(temp, null);
+        var tempfile = File.Open(temp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        var orgfile = File.Open(fname, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        nfile = new System.IO.StreamWriter(tempfile);
+        reader = new System.IO.StreamReader(orgfile);
+        string line;
+        int check = 1;
+        int ctr = 0;
+        //Read all lines and add to a temp, add extra index if deleted 
+        while ((line = reader.ReadLine()) != null)
+        {
+            string[] arr = line.Split(',');
+            if (arr.Length<5 && ctr != deletedLines.Count && check == (int)(deletedLines[ctr]))
+            {
+                //add extra index
+                nfile.WriteLine(line + ", dinosaur");
+                ctr++;
+            }
+            else
+            {
+                nfile.WriteLine(line);
+            }
+            check++;
+        }
+        //close all file readers and writers for both files 
+        nfile.Close();
+        //wfile.Close();
+        reader.Close();
+        //delete original move temp to original and delete temp file
+        File.Copy(temp, fname, true);
+    }
+
+    //function to add pads 
     void add(Vector3 add, int n)
     {
         //components of capsule 
@@ -193,38 +245,11 @@ public class GenerateCapsules1 : MonoBehaviour
         Dropdown_Add(n);
         num++;
     }
+
+    //finalize delete on quit
     private void OnApplicationQuit()
     {
-        deletedLines.Sort();
-        wfile.Close();
-        reader.Close();
-        var fp = File.Open(temp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        var fs = File.Open(fname, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-        nfile = new System.IO.StreamWriter(fp);
-        reader = new System.IO.StreamReader(fs);
-        string line;
-        int check = 1;
-        int ctr = 0;
-        while ((line = reader.ReadLine()) != null)
-        {
-            Debug.Log(check);
-            if (ctr != deletedLines.Count && check == (int)(deletedLines[ctr]))
-            {
-                Debug.Log((int)deletedLines[ctr] + " delete this line");
-                nfile.WriteLine(line + ", dinosaur");
-                ctr++;
-            }
-            else
-            {
-                nfile.WriteLine(line);
-            }
-            check++;
-        }
         nfile.Close();
-        wfile.Close();
-        reader.Close();
-        File.Delete(fname);
-        File.Move(temp, fname);
-        File.Delete(temp);
+        File.WriteAllText(temp, null);
     }
 }
