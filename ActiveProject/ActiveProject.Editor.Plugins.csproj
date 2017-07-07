@@ -127,6 +127,7 @@
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Our Scripts\Dinosaur.txt" />
     <None Include="Assets\Our Scripts\LaserPointer.shader" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Materials\UI-Default-No-Alpha.shader" />

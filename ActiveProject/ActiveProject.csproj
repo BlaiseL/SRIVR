@@ -117,6 +117,7 @@
     <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\ShowSliderValue.cs" />
     <Compile Include="Assets\Our Scripts\Menu Project\Assets\Scripts\TiltWindow.cs" />
     <Compile Include="Assets\Our Scripts\NavigationBasicThrust.cs" />
+    <Compile Include="Assets\Our Scripts\Quit.cs" />
     <Compile Include="Assets\Our Scripts\UIIgnoreRaycast.cs" />
     <Compile Include="Assets\Our Scripts\ViveControllerInput.cs" />
     <Compile Include="Assets\Our Scripts\ViveUILaserPointer.cs" />
@@ -440,6 +441,7 @@
     <Compile Include="Assets\VRnavigationBasicThrust\JoelGenModels\scripts\ObjectGrid.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Our Scripts\Dinosaur.txt" />
     <None Include="Assets\Our Scripts\LaserPointer.shader" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Materials\UI-Default-No-Alpha.shader" />
