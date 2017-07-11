@@ -100,6 +100,7 @@
     <Compile Include="Assets\Our Scripts\Coordinates.cs" />
     <Compile Include="Assets\Our Scripts\DemoLaserPointerTest.cs" />
     <Compile Include="Assets\Our Scripts\DemoMenu.cs" />
+    <Compile Include="Assets\Our Scripts\ExtraDropdowns.cs" />
     <Compile Include="Assets\Our Scripts\GenerateCapsules1.cs" />
     <Compile Include="Assets\Our Scripts\GravityGun.cs" />
     <Compile Include="Assets\Our Scripts\IUILaserPointer.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Assets\Our Scripts\ViveUILaserPointer.cs" />
     <Compile Include="Assets\Our Scripts\Zoom.cs" />
     <Compile Include="Assets\Our Scripts\Zoom1.cs" />
+    <Compile Include="Assets\Our Scripts\creatingSaves.cs" />
     <Compile Include="Assets\Our Scripts\toolTIP.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -438,6 +440,7 @@
     <Compile Include="Assets\VRnavigationBasicThrust\JoelGenModels\scripts\JoelHelperMethods.cs" />
     <Compile Include="Assets\VRnavigationBasicThrust\JoelGenModels\scripts\JoelTree.cs" />
     <Compile Include="Assets\VRnavigationBasicThrust\JoelGenModels\scripts\ObjectGrid.cs" />
+    <Compile Include="Assets\screen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Our Scripts\LaserPointer.shader" />

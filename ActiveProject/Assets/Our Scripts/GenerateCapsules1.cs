@@ -16,7 +16,7 @@ public class GenerateCapsules1 : MonoBehaviour {
     int counter = -1;
     public GameObject cam;
     int lcount = -1;
-    Color[] label = {Color.blue, Color.green, Color.magenta, Color.yellow, Color.red, Color.white };
+    Color[] label = {Color.blue, Color.green, Color.black, Color.yellow, Color.red, Color.white };
     int deletespot=-1;
     int num=0;
     bool menuUp = false; 
