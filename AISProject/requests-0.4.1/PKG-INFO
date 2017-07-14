@@ -1,0 +1,284 @@
+Metadata-Version: 1.0
+Name: requests
+Version: 0.4.1
+Summary: Awesome Python HTTP Library that's actually usable.
+Home-page: http://python-requests.org
+Author: Kenneth Reitz
+Author-email: me@kennethreitz.com
+License: ISC
+Description: Requests: The Simple (e.g. usable) HTTP Module
+        ==============================================
+        
+        Most existing Python modules for dealing HTTP requests are insane. I have to look up *everything* that I want to do. Most of my worst Python experiences are a result of the various built-in HTTP libraries (yes, even worse than Logging).
+        
+        But this one's different. This one's going to be awesome. And simple.
+        
+        Really simple.
+        
+        Features
+        --------
+        
+        - Extremely simple GET, HEAD, POST, PUT, DELETE Requests
+            + Simple HTTP Header Request Attachment
+            + Simple Data/Params Request Attachment
+            + Simple Multipart File Uploads
+            + CookieJar Support
+            + Redirection History
+            + Redirection Recursion Urllib Fix
+            + Auto Decompression of GZipped Content
+            + Unicode URL Support
+        
+        - Simple Authentication
+            + Simple URL + HTTP Auth Registry
+        
+        
+        Usage
+        -----
+        
+        It couldn't be simpler. ::
+        
+            >>> import requests
+            >>> r = requests.get('http://google.com')
+        
+        
+        HTTPS? Basic Authentication? ::
+        
+            >>> r = requests.get('https://convore.com/api/account/verify.json')
+            >>> r.status_code
+            401
+        
+        
+        Uh oh, we're not authorized! Let's add authentication. ::
+        
+            >>> conv_auth = ('requeststest', 'requeststest')
+            >>> r = requests.get('https://convore.com/api/account/verify.json', auth=conv_auth)
+        
+            >>> r.status_code
+            200
+        
+            >>> r.headers['content-type']
+            'application/json'
+        
+            >>> r.content
+            '{"username": "requeststest", "url": "/users/requeststest/", "id": "9408", "img": "censored-long-url"}'
+        
+        
+        
+        API
+        ---
+        
+        **Requests:**
+        
+        All request functions return a Response object (see below).
+        
+        If a {filename: fileobject} dictionary is passed in (files=...), a multipart_encode upload will be performed.
+        If CookieJar object is is passed in (cookies=...), the cookies will be sent with the request.
+        
+          GET Requests
+            >>> requests.get(url, params={}, headers={}, cookies=None, auth=None)
+            <Response [200]>
+        
+          HEAD Requests
+            >>> requests.head(url, params={}, headers={}, cookies=None, auth=None)
+            <Response [200]>
+        
+          PUT Requests
+            >>> requests.put(url, data='', headers={}, files={}, cookies=None, auth=None)
+            <Response [200]>
+        
+          POST Requests
+            >>> requests.post(url, data={}, headers={}, files={}, cookies=None, auth=None)
+            <Response [200]>
+        
+          DELETE Requests
+            >>> requests.delete(url, params={}, headers={}, cookies=None, auth=None)
+            <Response [200]>
+        
+        
+        **Responses:**
+        
+            Response.status_code
+                 (Integer) Received HTTP Status Code Response
+        
+            Response.headers
+                ((CaseInsensitive) Dictionary) Received HTTP Response Headers.
+        
+            Response.content
+                (Bytes) Received Content.
+        
+            Response.history
+                (List of Responses) Redirection History.
+        
+            Response.url
+                (String) URL of response. Useful for detecting redirects.
+        
+            Response.ok
+                (Bool) True if no errors occurred during the request, and the status_code is kosher.
+        
+            Response.cached
+                (Bool) True if Response.content is stored within the object.
+        
+            Response.error
+                (HTTPError) If an HTTPError occurred (e.g. status of 404), Otherwise this is None.
+        
+            Response.raise_for_status()
+                Raises HTTPError if a request is not kosher.
+        
+        
+        **HTTP Authentication Registry:**
+        
+            You can register AuthObjects to automatically enable HTTP Authentication on requests that contain a registered base URL string.
+        
+            >>> requests.auth_manager.add_auth(url, authobject)
+        
+        
+        
+        Installation
+        ------------
+        
+        To install requests, simply: ::
+        
+            $ pip install requests
+        
+        Or, if you absolutely must: ::
+        
+            $ easy_install requests
+        
+        But, you really shouldn't do that.
+        
+        
+        
+        Contribute
+        ----------
+        
+        If you'd like to contribute, simply fork `the repository`_, commit your changes to the **develop** branch (or branch off of it), and send a pull request. Make sure you add yourself to AUTHORS_.
+        
+        
+        
+        Roadmap
+        -------
+        
+        - Sphinx Documentation
+        
+        .. _`the repository`: http://github.com/kennethreitz/requests
+        .. _AUTHORS: http://github.com/kennethreitz/requests/blob/master/AUTHORS
+        
+        
+        History
+        -------
+        
+        0.4.1 (2011-05-22)
+        ++++++++++++++++++
+        
+        * Improved Redirection Handling
+        * New 'allow_redirects' param for following non-GET/HEAD Redirects
+        * Settings module refactoring
+        
+        
+        0.4.0 (2011-05-15)
+        ++++++++++++++++++
+        
+        * Response.history: list of redirected responses
+        * Case-Insensitive Header Dictionaries!
+        * Unicode URLs
+        
+        
+        0.3.4 (2011-05-14)
+        ++++++++++++++++++
+        
+        * Urllib2 HTTPAuthentication Recursion fix (Basic/Digest)
+        * Internal Refactor
+        * Bytes data upload Bugfix
+        
+        
+        
+        0.3.3 (2011-05-12)
+        ++++++++++++++++++
+        
+        * Request timeouts
+        * Unicode url-encoded data
+        * Settings context manager and module
+        
+        
+        0.3.2 (2011-04-15)
+        ++++++++++++++++++
+        
+        * Automatic Decompression of GZip Encoded Content
+        * AutoAuth Support for Tupled HTTP Auth
+        
+        
+        0.3.1 (2011-04-01)
+        ++++++++++++++++++
+        
+        * Cookie Changes
+        * Response.read()
+        * Poster fix
+        
+        
+        0.3.0 (2011-02-25)
+        ++++++++++++++++++
+        
+        * Automatic Authentication API Change
+        * Smarter Query URL Parameterization
+        * Allow file uploads and POST data together
+        * New Authentication Manager System
+            - Simpler Basic HTTP System
+            - Supports all build-in urllib2 Auths
+            - Allows for custom Auth Handlers
+        
+        
+        0.2.4 (2011-02-19)
+        ++++++++++++++++++
+        
+        * Python 2.5 Support
+        * PyPy-c v1.4 Support
+        * Auto-Authentication tests
+        * Improved Request object constructor
+        
+        0.2.3 (2011-02-15)
+        ++++++++++++++++++
+        
+        * New HTTPHandling Methods
+            - Reponse.__nonzero__ (false if bad HTTP Status)
+            - Response.ok (True if expected HTTP Status)
+            - Response.error (Logged HTTPError if bad HTTP Status)
+            - Reponse.raise_for_status() (Raises stored HTTPError)
+        
+        
+        0.2.2 (2011-02-14)
+        ++++++++++++++++++
+        
+        * Still handles request in the event of an HTTPError. (Issue #2)
+        * Eventlet and Gevent Monkeypatch support.
+        * Cookie Support (Issue #1)
+        
+        
+        0.2.1 (2011-02-14)
+        ++++++++++++++++++
+        
+        * Added file attribute to POST and PUT requests for multipart-encode file uploads.
+        * Added Request.url attribute for context and redirects
+        
+        
+        0.2.0 (2011-02-14)
+        ++++++++++++++++++
+        
+        * Birth!
+        
+        
+        0.0.1 (2011-02-13)
+        ++++++++++++++++++
+        
+        * Frustration
+        * Conception
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
