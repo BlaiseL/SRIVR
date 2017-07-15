@@ -2,6 +2,9 @@ import socket
 import ais
 import re
 import os
+import threading 
+import time
+from url_webpage_serive import getData
 
 host = ""
 port = 5002
@@ -26,6 +29,12 @@ def parse(string):
 	splitc= seperate(partc)
 	splitd= seperate(partd)
 	return (splitd+ ","+ splitb+ "," +splitc)
+
+class RepeatingThread(threading.Thread):
+	def run(self):
+	while(True):
+		getData()
+		time.sleep(240)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((host, port))
