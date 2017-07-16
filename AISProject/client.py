@@ -8,7 +8,13 @@ from url_webpage_serive import getData
 
 host = ""
 port = 5002
-
+"""
+Code needs to read Data.csv and parse it into a dictionary
+Dictinaries are efficient, they should use bin search and therefore
+will be great to use to check and update MMSI data
+Threads are efficient, create another to run the input data to a dictionary 
+when they recieve signal that data is done
+"""
 #return the number of whatever string you want
 def seperate(string):
 	spl= string.split(' ')
@@ -30,11 +36,12 @@ def parse(string):
 	splitd= seperate(partd)
 	return (splitd+ ","+ splitb+ "," +splitc)
 
+#Thread class that runs the data every 4 minutes, getData takes 60 sec
 class RepeatingThread(threading.Thread):
 	def run(self):
-	while(True):
-		getData()
-		time.sleep(240)
+		while(True):
+			getData()
+			time.sleep(240)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((host, port))
