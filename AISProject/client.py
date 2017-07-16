@@ -70,9 +70,9 @@ while True:
 			strn= str(x)+","+str(y)+","+str(arr[0])
 			ret=dict.get(arr[0])
 			if(ret!=none):
-				strn=strn+ ret
+				strn=strn+","+ ret
 			else 
-				strn= strn+ "None"
+				strn= strn+ ",None"
 			print (strn)
 			file.write(strn+"\n")
 	except Exception:
