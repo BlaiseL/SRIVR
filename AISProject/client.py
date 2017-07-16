@@ -5,7 +5,9 @@ import os
 import threading 
 import time
 from url_webpage_serive import getData
-
+from parsecsv import retDict
+ 
+dict={}
 host = ""
 port = 5002
 """
@@ -41,7 +43,12 @@ class RepeatingThread(threading.Thread):
 	def run(self):
 		while(True):
 			getData()
+			dict=retDict()
 			time.sleep(240)
+
+thread= RepeatingThread()
+thread.start()
+
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((host, port))
@@ -61,6 +68,11 @@ while True:
 		y= (float)(arr[2])
 		if (y> 40.720721 and y<40.752849 and x> -74.024422 and x<-74.008198):
 			strn= str(x)+","+str(y)+","+str(arr[0])
+			ret=dict.get(arr[0])
+			if(ret!=none):
+				strn=strn+ ret
+			else 
+				strn= strn+ "None"
 			print (strn)
 			file.write(strn+"\n")
 	except Exception:
