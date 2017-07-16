@@ -10,13 +10,8 @@ from parsecsv import retDict
 dict={}
 host = ""
 port = 5002
-"""
-Code needs to read Data.csv and parse it into a dictionary
-Dictinaries are efficient, they should use bin search and therefore
-will be great to use to check and update MMSI data
-Threads are efficient, create another to run the input data to a dictionary 
-when they recieve signal that data is done
-"""
+
+
 #return the number of whatever string you want
 def seperate(string):
 	spl= string.split(' ')
@@ -42,14 +37,14 @@ def parse(string):
 class RepeatingThread(threading.Thread):
 	def run(self):
 		while(True):
-			getData()
-			dict=retDict()
+			getData()#update the data.csv
+			dict=retDict()#put csv data into a dictionary
 			time.sleep(240)
-
+#start the thread
 thread= RepeatingThread()
 thread.start()
 
-
+#opening socket for ais data
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((host, port))
 file = open("Merica.txt","a")
@@ -68,11 +63,8 @@ while True:
 		y= (float)(arr[2])
 		if (y> 40.720721 and y<40.752849 and x> -74.024422 and x<-74.008198):
 			strn= str(x)+","+str(y)+","+str(arr[0])
-			ret=dict.get(arr[0])
-			if(ret!=none):
-				strn=strn+","+ ret
-			else 
-				strn= strn+ ",None"
+			ret=dict.get(str(arr[0]))#get the MMSI type
+			strn=strn+","+ str(ret) 
 			print (strn)
 			file.write(strn+"\n")
 	except Exception:
