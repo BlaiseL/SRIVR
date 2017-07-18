@@ -131,7 +131,10 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <None Include="Assets\GoogleMaps\README.txt" />
+=======
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
 =======
 >>>>>>> 710c6d937430837c776e15455509c65cc6306a86
     <None Include="Assets\Our Scripts\Dinosaur.txt" />
