@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightTest", "FlightTest.csproj", "{78CEAA38-44B5-AAEE-0ADE-C954336ED105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightTest.Editor", "FlightTest.Editor.csproj", "{D23F20F6-B7E5-4174-732F-EBCDBF800AAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78CEAA38-44B5-AAEE-0ADE-C954336ED105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78CEAA38-44B5-AAEE-0ADE-C954336ED105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78CEAA38-44B5-AAEE-0ADE-C954336ED105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78CEAA38-44B5-AAEE-0ADE-C954336ED105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D23F20F6-B7E5-4174-732F-EBCDBF800AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23F20F6-B7E5-4174-732F-EBCDBF800AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23F20F6-B7E5-4174-732F-EBCDBF800AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23F20F6-B7E5-4174-732F-EBCDBF800AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/satCordProj.unity
+  isLoaded: 1
+  isActive: 1

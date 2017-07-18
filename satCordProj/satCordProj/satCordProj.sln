@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "satCordProj.Plugins", "satCordProj.Plugins.csproj", "{22DC1D43-CA36-CB41-18C9-850B4F444124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "satCordProj", "satCordProj.csproj", "{D1D79651-8D97-A57F-A280-B903BB69CD20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "satCordProj.Editor.Plugins", "satCordProj.Editor.Plugins.csproj", "{C8876A57-1D38-5857-AD8B-5DAA32FDB4C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22DC1D43-CA36-CB41-18C9-850B4F444124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DC1D43-CA36-CB41-18C9-850B4F444124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DC1D43-CA36-CB41-18C9-850B4F444124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DC1D43-CA36-CB41-18C9-850B4F444124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D79651-8D97-A57F-A280-B903BB69CD20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D79651-8D97-A57F-A280-B903BB69CD20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D79651-8D97-A57F-A280-B903BB69CD20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D79651-8D97-A57F-A280-B903BB69CD20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8876A57-1D38-5857-AD8B-5DAA32FDB4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8876A57-1D38-5857-AD8B-5DAA32FDB4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8876A57-1D38-5857-AD8B-5DAA32FDB4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8876A57-1D38-5857-AD8B-5DAA32FDB4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
