@@ -47,6 +47,7 @@ class RepeatingThread(threading.Thread):
 			flag=0
 #start the thread
 thread= RepeatingThread()
+thread.setDaemon(True)
 thread.start()
 #dictionary=q.get()
 
