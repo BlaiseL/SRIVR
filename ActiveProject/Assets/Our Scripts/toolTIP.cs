@@ -7,7 +7,11 @@ public class toolTIP : MonoBehaviour
 
     public SteamVR_TrackedObject trackedObj, otherTrackedObj;
     private bool menuUp;
+<<<<<<< HEAD
     public GameObject leftMenu, rightMenu, coordinates;
+=======
+    public GameObject leftMenu, rightMenu;
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
     // Initializes controller as tracked object
     void Awake()
     {
@@ -15,7 +19,6 @@ public class toolTIP : MonoBehaviour
         otherTrackedObj = GetComponent<SteamVR_TrackedObject>();
         leftMenu.GetComponent<Renderer>().enabled = false;
         rightMenu.GetComponent<Renderer>().enabled = false;
-        coordinates.SetActive(false);
     }
 
 
@@ -27,14 +30,12 @@ public class toolTIP : MonoBehaviour
         {
             leftMenu.GetComponent<Renderer>().enabled = true;
             rightMenu.GetComponent<Renderer>().enabled = true;
-            coordinates.SetActive(true);
             menuUp = true;
         }
         else if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu) && menuUp)
         {
             leftMenu.GetComponent<Renderer>().enabled = false;
             rightMenu.GetComponent<Renderer>().enabled = false;
-            coordinates.SetActive(false);
             menuUp = false;
         }
     }

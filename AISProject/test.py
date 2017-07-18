@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 print("test")
 =======
+=======
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
 import socket
 import ais
 import re
@@ -85,4 +88,7 @@ dictionary=q.get()
 
 
 
+<<<<<<< HEAD
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
+=======
 >>>>>>> 710c6d937430837c776e15455509c65cc6306a86

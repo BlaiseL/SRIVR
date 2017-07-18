@@ -48,6 +48,10 @@ class RepeatingThread(threading.Thread):
 #start the thread
 thread= RepeatingThread()
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+thread.setDaemon(True)
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
 =======
 thread.setDaemon(True)
 >>>>>>> 710c6d937430837c776e15455509c65cc6306a86

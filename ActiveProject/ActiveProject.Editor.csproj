@@ -148,7 +148,10 @@
     <Compile Include="Assets\VRTK\Scripts\Controls\2D\RadialMenu\Editor\RadialMenuInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Assets\GoogleMaps\README.txt" />
+=======
+>>>>>>> 710c6d937430837c776e15455509c65cc6306a86
     <None Include="Assets\Our Scripts\Dinosaur.txt" />
     <None Include="Assets\Our Scripts\LaserPointer.shader" />
     <None Include="Assets\Our Scripts\Menu Project\Assets\Fonts\Jupiter\LICENSE.txt" />
