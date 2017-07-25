@@ -7,14 +7,7 @@ public class toolTIP : MonoBehaviour
 
     public SteamVR_TrackedObject trackedObj, otherTrackedObj;
     private bool menuUp;
-<<<<<<< HEAD
-    public GameObject leftMenu, rightMenu, coordinates;
-=======
     public GameObject leftMenu, rightMenu;
-<<<<<<< HEAD
->>>>>>> 710c6d937430837c776e15455509c65cc6306a86
-=======
->>>>>>> 710c6d937430837c776e15455509c65cc6306a86
     // Initializes controller as tracked object
     void Awake()
     {
