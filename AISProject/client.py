@@ -47,18 +47,7 @@ class RepeatingThread(threading.Thread):
 			flag=0
 #start the thread
 thread= RepeatingThread()
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 thread.setDaemon(True)
->>>>>>> 710c6d937430837c776e15455509c65cc6306a86
-=======
-thread.setDaemon(True)
->>>>>>> 710c6d937430837c776e15455509c65cc6306a86
-=======
-thread.setDaemon(True)
->>>>>>> 710c6d937430837c776e15455509c65cc6306a86
 thread.start()
 #dictionary=q.get()
 
