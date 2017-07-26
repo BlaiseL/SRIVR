@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps.Plugins", "GoogleMaps.Plugins.csproj", "{4DACA335-04BB-813C-FF5E-13E3FCD943C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps", "GoogleMaps.csproj", "{B80A1714-FCF6-6F99-09DD-626DDC04971D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps.Editor.Plugins", "GoogleMaps.Editor.Plugins.csproj", "{241E35AF-2E4D-7AD1-8B40-C5EFF6474284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMaps.Editor", "GoogleMaps.Editor.csproj", "{7D09F6DE-161E-01F2-6BFD-9A27BC123241}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DACA335-04BB-813C-FF5E-13E3FCD943C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DACA335-04BB-813C-FF5E-13E3FCD943C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DACA335-04BB-813C-FF5E-13E3FCD943C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DACA335-04BB-813C-FF5E-13E3FCD943C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B80A1714-FCF6-6F99-09DD-626DDC04971D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80A1714-FCF6-6F99-09DD-626DDC04971D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80A1714-FCF6-6F99-09DD-626DDC04971D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80A1714-FCF6-6F99-09DD-626DDC04971D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{241E35AF-2E4D-7AD1-8B40-C5EFF6474284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{241E35AF-2E4D-7AD1-8B40-C5EFF6474284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{241E35AF-2E4D-7AD1-8B40-C5EFF6474284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{241E35AF-2E4D-7AD1-8B40-C5EFF6474284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D09F6DE-161E-01F2-6BFD-9A27BC123241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D09F6DE-161E-01F2-6BFD-9A27BC123241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D09F6DE-161E-01F2-6BFD-9A27BC123241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D09F6DE-161E-01F2-6BFD-9A27BC123241}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
